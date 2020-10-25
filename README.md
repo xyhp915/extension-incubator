@@ -1,2 +1,0 @@
-# extension-incubator
-A playground 🤘
