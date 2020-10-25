@@ -7,4 +7,4 @@ var t=arguments[3];Object.defineProperty(exports,"__esModule",{value:!0}),export
 },{}],"Focm":[function(require,module,exports) {
 "use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.mount=a;var e=n(require("vue")),t=n(require("./Counter"));function n(e){return e&&e.__esModule?e:{default:e}}let o=e.default.observable({connected:!1,inputChars:""}),s=null;const u=new MessageChannel;async function a({host:n}){const u=n.querySelector("#app-vue");(s=new e.default({render:e=>e("section",[e("h3",{style:{color:o.connected?"green":""}},o.connected?"Connected!":"Connecting"),e(t.default,{props:{num:o.inputChars.length}})])})).$mount(u)}setTimeout(()=>{postMessage(":establish :ext-vue","*",[u.port2])}),u.port1.onmessage=(e=>{const t=e.data;":established"!==t?t&&"input-value-changed"===t.action&&(o.inputChars=t.payload.value):o.connected=!0});
 },{"vue":"QPfz","./Counter":"uXpn"}]},{},["Focm"], null)
-//# sourceMappingURL=/ext-vue/ext-vue.d5a9c69a.js.map
+//# sourceMappingURL=/extension-incubator/ext-vue/ext-vue.d5a9c69a.js.map
