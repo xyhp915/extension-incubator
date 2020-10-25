@@ -207,7 +207,7 @@ class AppExtensionImpl extends EventEmitter implements ExtensionLifeCircle {
 const loadedExts = new WeakSet()
 const establishedExtsChan = new Map<string, MessagePort>()
 const IS_DEV = process.env.NODE_ENV === 'development'
-const PUBLIC_URL = IS_DEV ? 'http://localhost:8080' : window.location.origin
+const PUBLIC_URL = IS_DEV ? 'http://localhost:8080' : `${window.location.origin}/extension-incubator`
 
 const exB = new AppExtensionImpl('ext-b', `${PUBLIC_URL}/ext-b.html`)
 exB.setup(document.querySelector('#app') as HTMLElement).catch(console.error)

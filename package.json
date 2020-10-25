@@ -11,11 +11,11 @@
     "dev:main": "parcel ./index.html",
     "dev:vue": "cd ext-vue && parcel --public-url=http://localhost:8080/ext-vue/dist/ ./index.html",
     "dev:react": "cd ext-react && parcel --public-url=http://localhost:8080/ext-react/dist/ ./index.html",
-    "build:vue": "cd ext-vue && parcel build --public-url=/ext-vue --out-dir=../examples/ext-vue ./index.html",
-    "build:react": "cd ext-react && parcel build --public-url=/ext-react --out-dir=../examples/ext-react ./index.html",
+    "build:vue": "cd ext-vue && parcel build --public-url=/extension-incubator/ext-vue --out-dir=../examples/ext-vue ./index.html",
+    "build:react": "cd ext-react && parcel build --public-url=/extension-incubator/ext-react --out-dir=../examples/ext-react ./index.html",
     "build:main": "parcel build --public-url=. --out-dir=./examples ./index.html",
-    "build:ext-a": "parcel build --public-url=/ --out-dir=./examples ./ext-a.html",
-    "build:ext-b": "parcel build --public-url=/ --out-dir=./examples ./ext-b.html"
+    "build:ext-a": "parcel build --public-url=/extension-incubator/ --out-dir=./examples ./ext-a.html",
+    "build:ext-b": "parcel build --public-url=/extension-incubator/ --out-dir=./examples ./ext-b.html"
   },
   "dependencies": {
     "eventemitter3": "^4.0.7",
