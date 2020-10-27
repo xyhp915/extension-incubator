@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ReactDOM from 'react-dom'
+// @ts-ignore
+import md from 'marked'
 
-let actions = {}
+let actions: any = {}
 const chan = new MessageChannel()
 
 // region establish message channel
@@ -30,18 +32,22 @@ chan.port1.onmessage = (e) => {
  * @param props
  * @constructor
  */
-function Counter (props) {
+function MdDisplay (props: { content: string }) {
+  if (!props.content) {
+    return null
+  }
+
   return (
-    <p className="num-wrap" style={{
-      backgroundColor: '#3d69bf',
-      fontSize: '32px',
+    <div className="md-display" style={{
+      backgroundColor: '#f1f1f1',
       color: 'black',
-      padding: '20px'
+      fontSize: '22px',
+      padding: '10px'
     }}>
-      <strong>
-        已输入 {props.num} 字符 ～
-      </strong>
-    </p>
+      <div className="inner markdown-body"
+           dangerouslySetInnerHTML={{ __html: md(props.content) }}
+      />
+    </div>
   )
 }
 
@@ -49,7 +55,7 @@ function Counter (props) {
  * @param props
  * @constructor
  */
-function App (props) {
+function App (props: any) {
   const [connected, setConnected] = useState(false)
   const [inputChars, setInputChars] = useState('')
 
@@ -64,7 +70,7 @@ function App (props) {
     <>
       <h3>{connected ? <span
         style={{ color: 'green' }}>Connected!</span> : 'Connecting...'}</h3>
-      <Counter num={inputChars.length} />
+      <MdDisplay content={inputChars}/>
     </>
   )
 }
@@ -73,8 +79,8 @@ function App (props) {
  * @param host
  * @returns {Promise<void>}
  */
-export function mount ({ host }) {
+export function mount ({ host }: { host: ShadowRoot }) {
   const root = host.querySelector('#app')
 
-  ReactDOM.render(<App />, root)
+  ReactDOM.render(<App/>, root)
 }

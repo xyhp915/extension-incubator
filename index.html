@@ -35,6 +35,11 @@
     .host-wrap > .rr, .react {
       flex: 1;
     }
+
+    ext-b {
+      display: block;
+      width: 100%;
+    }
   </style>
 </head>
 <body>
@@ -42,11 +47,14 @@
   <h1>Host (BulmaUI)</h1>
   <div class="host-wrap">
     <div class="ll">
-      <textarea class="my-input input" autofocus="on" placeholder="BulmaUI"></textarea>
+      <textarea class="my-input input" autofocus="on" placeholder="Support Markdown"></textarea>
     </div>
 
     <div class="rr" id="ext-a-slot"></div>
   </div>
+
+  <div class="host-wrap-2" id="app-b"></div>
+
   <div class="host-wrap-2">
     <div class="react" id="react-slot"></div>
     <div class="vue" id="vue-slot"></div>

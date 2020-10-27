@@ -40,6 +40,7 @@ const CSS_URL_OR_STYLE_RE = new RegExp(
 const BODY_CONTENT_RE = /<\s*body[^>]*>([\w\W]*)<\s*\/body>/
 const SCRIPT_ANY_RE = /<\s*script[^>]*>[\s\S]*?(<\s*\/script[^>]*>)/g
 const TEST_URL = /^(?:https?):\/\/[-a-zA-Z0-9.]+/
+const HTML_LIKE_COMMENT_RE = /\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*|<!--[\s\S]*?-->/
 
 export async function importHtml (
   app: { name: string, url: string }
@@ -48,7 +49,10 @@ export async function importHtml (
   styleNodes: HTMLStyleElement[]
   bodyNode: HTMLTemplateElement
 }> {
-  const template = await request(app.url as string)
+  let template = await request(app.url as string)
+
+  template = template.replace(HTML_LIKE_COMMENT_RE, '')
+
   const styleNodes = await loadCSS(template)
   const bodyNode = loadBody(template)
   const lifecycle = await loadScript(template, app.name)

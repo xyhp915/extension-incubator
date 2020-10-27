@@ -210,7 +210,7 @@ const IS_DEV = process.env.NODE_ENV === 'development'
 const PUBLIC_URL = IS_DEV ? 'http://localhost:8080' : `${window.location.origin}/extension-incubator`
 
 const exB = new AppExtensionImpl('ext-b', `${PUBLIC_URL}/ext-b.html`)
-exB.setup(document.querySelector('#app') as HTMLElement).catch(console.error)
+exB.setup(document.querySelector('#app-b') as HTMLElement).catch(console.error)
 
 const exD = new AppExtensionImpl('ext-react', `${PUBLIC_URL}/ext-react/${IS_DEV ? 'dist/' : ''}index.html`)
 exD.setup(document.querySelector('#react-slot') as HTMLElement).catch(console.error)
