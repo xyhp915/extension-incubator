@@ -15,7 +15,9 @@
     "build:react": "cd ext-react && parcel build --public-url=/extension-incubator/ext-react --out-dir=../examples/ext-react ./index.html",
     "build:main": "parcel build --public-url=. --out-dir=./examples ./index.html",
     "build:ext-a": "parcel build --public-url=/extension-incubator/ --out-dir=./examples ./ext-a.html",
-    "build:ext-b": "parcel build --public-url=/extension-incubator/ --out-dir=./examples ./ext-b.html"
+    "build:ext-b": "parcel build --public-url=/extension-incubator/ --out-dir=./examples ./ext-b.html",
+    "deploy:bundle": "concurrently \"npm:build:*\"",
+    "deploy:gh-pages": "git subtree push --prefix examples origin2 gh-pages"
   },
   "dependencies": {
     "eventemitter3": "^4.0.7",
@@ -31,6 +33,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "@vue/component-compiler-utils": "^3.2.0",
+    "concurrently": "^5.3.0",
     "parcel-bundler": "^1.12.4",
     "typescript": "^4.0.3",
     "vue-template-compiler": "^2.6.12"
